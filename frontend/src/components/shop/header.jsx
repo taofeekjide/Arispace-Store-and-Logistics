@@ -138,8 +138,8 @@ export default function ShoppingHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white border-b border-gray-200 transition-all duration-300 ${
-        isScrolled ? "py-2 shadow-lg" : "py-4 shadow-sm"
+      className={`sticky top-0 z-50 bg-white border-b border-gray-200 py-4 transition-shadow duration-300 ${
+        isScrolled ? "shadow-lg" : "shadow-sm"
       }`}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -147,9 +147,7 @@ export default function ShoppingHeader() {
         <Link to="/shop/home" className="flex items-center gap-2">
           <Home className="text-yellow-600 w-6 h-6" />
           <span
-            className={`font-semibold text-gray-800 transition-all duration-300 ${
-              isScrolled ? "text-base" : "text-lg"
-            }`}
+            className={`font-semibold text-gray-800 transition-all duration-300`}
           >
             AriSpace Store & Logistics
           </span>
