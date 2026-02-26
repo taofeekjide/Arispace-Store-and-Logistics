@@ -51,6 +51,8 @@ function App() {
     );
   }
 
+  console.log("API URL:", import.meta.env.VITE_API_URL);
+
   return (
     <>
       <div className="flex flex-col bg-white">
