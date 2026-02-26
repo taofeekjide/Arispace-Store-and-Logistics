@@ -14,7 +14,7 @@ router.post("/initialize", async (req, res) => {
       {
         email,
         amount,
-        callback_url: "http://localhost:5173/checkout-success",
+        callback_url: `${process.env.CLIENT_BASE_URL}/checkout-success`,
         metadata: {
           orderId: orderId,
         },
