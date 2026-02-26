@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import { checkAuth } from "./store/authSlice";
 import { Skeleton } from "./components/ui/skeleton";
 import CheckoutSuccess from "./pages/shop/CheckoutSuccess";
+import LandingPage from "./pages/landing/LandingPage";
 
 function App() {
   const { isAuthenticated, user, isLoading } = useSelector(
@@ -100,6 +101,8 @@ function App() {
           <Route path="checkout-success" element={<CheckoutSuccess />} />
 
           <Route path="*" element={<NotFound />} />
+
+          <Route path="/" element={<LandingPage />} />
 
           <Route path="/unauthorized" element={<Unauthorized />} />
         </Routes>
