@@ -49,7 +49,7 @@ async function login(req, res) {
     }
     const isPasswordCorrect = await bcrypt.compare(
       password,
-      existingUser.password
+      existingUser.password,
     );
     if (!isPasswordCorrect) {
       return res.status(400).json({
@@ -66,12 +66,12 @@ async function login(req, res) {
         userName: existingUser.username,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
     res
       .cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
       })
       .json({
         success: true,
