@@ -47,7 +47,6 @@ export default function AdminProducts() {
     currentEditedId !== null
       ? dispatch(editProduct({ id: currentEditedId, formData })).then(
           (data) => {
-            console.log(data, "edit");
             if (data?.payload?.success) {
               dispatch(getProducts());
               setImageUrl("");

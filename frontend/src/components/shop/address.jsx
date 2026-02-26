@@ -108,8 +108,6 @@ export default function Address({ selectedAddress, setSelectedAddress }) {
     dispatch(fetchAllAddresses(user?.id));
   }, [dispatch]);
 
-  console.log(addressList, "Address");
-
   return (
     <Card className="bg-white border border-black/10 shadow-sm rounded-xl">
       {/* Address List Header */}

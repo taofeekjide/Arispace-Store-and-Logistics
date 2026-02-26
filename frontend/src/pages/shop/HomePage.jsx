@@ -89,8 +89,6 @@ export default function ShoppingHomePage() {
     );
   }, [dispatch]);
 
-  console.log("Product List:", productList);
-
   return (
     <div className="w-full">
       <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] overflow-hidden rounded-xl">

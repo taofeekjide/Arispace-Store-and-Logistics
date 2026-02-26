@@ -38,7 +38,7 @@ function createSearchParamsHelper(filters) {
 export default function ShoppingProductListing() {
   const dispatch = useDispatch();
   const { productList, productDetails } = useSelector(
-    (state) => state.shopProducts
+    (state) => state.shopProducts,
   );
   const { user } = useSelector((state) => state.auth);
   const [filters, setFilters] = useState({});
@@ -51,8 +51,6 @@ export default function ShoppingProductListing() {
   }
 
   function handleFilter(getSectionId, getCurrentOptions) {
-    console.log(getSectionId, getCurrentOptions, "handlefilter");
-
     let cpyFilters = { ...filters };
     const indexOfCurrentSection = Object.keys(cpyFilters).indexOf(getSectionId);
 
@@ -85,7 +83,7 @@ export default function ShoppingProductListing() {
         userId: user?.id,
         productId: getCurrentProductId,
         quantity: 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
         toast("Product added to cart successfully");
@@ -109,7 +107,7 @@ export default function ShoppingProductListing() {
   useEffect(() => {
     if (filters !== null && sort !== null)
       dispatch(
-        getFilteredProducts({ filterParams: filters, sortParams: sort })
+        getFilteredProducts({ filterParams: filters, sortParams: sort }),
       );
   }, [dispatch, sort, filters]);
 

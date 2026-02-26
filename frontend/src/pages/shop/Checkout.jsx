@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import UserCartItemsContent from "@/components/shop/cartItemsContent";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { toast } from "sonner";
 
 export default function ShoppingCheckout() {
   const { cartItems } = useSelector((state) => state.shopCart);
@@ -16,7 +17,21 @@ export default function ShoppingCheckout() {
 
   const handleCheckout = async () => {
     if (!selectedAddress) {
-      alert("Please select an address");
+      toast.error("Please select a delivery address before continuing.", {
+        duration: 4000,
+        style: {
+          padding: "20px",
+          fontSize: "18px",
+          fontWeight: "600",
+          borderRadius: "12px",
+          backgroundColor: "red",
+          color: "#fff",
+        },
+        iconTheme: {
+          primary: "#dc2626", // red-600
+          secondary: "#fff",
+        },
+      });
       return;
     }
 
@@ -53,8 +68,21 @@ export default function ShoppingCheckout() {
 
       window.location.href = authorization_url;
     } catch (err) {
-      console.log(err);
-      alert("Payment initialization failed");
+      toast.error(err?.response?.data?.message || "An error occurred", {
+        duration: 4000,
+        style: {
+          padding: "20px",
+          fontSize: "18px",
+          fontWeight: "600",
+          borderRadius: "12px",
+          backgroundColor: "red",
+          color: "#fff",
+        },
+        iconTheme: {
+          primary: "#dc2626", // red-600
+          secondary: "#fff",
+        },
+      });
       setIsProcessing(false); // Stop loading if error
     }
   };

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "@/store/shop/cartSlice";
+import { toast } from "sonner";
 
 export default function CheckoutSuccess() {
   const location = useLocation();
@@ -32,7 +33,7 @@ export default function CheckoutSuccess() {
           await dispatch(getCartItems(user.id));
         }
       } catch (error) {
-        console.log(error);
+        toast.error(error.response?.data?.message || "Payment verification failed");
       }
     };
 
