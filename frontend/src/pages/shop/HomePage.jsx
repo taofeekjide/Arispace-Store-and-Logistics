@@ -32,7 +32,7 @@ const categoriesWithIcon = [
 export default function ShoppingHomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { productList, productDetails } = useSelector(
-    (state) => state.shopProducts
+    (state) => state.shopProducts,
   );
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -61,10 +61,20 @@ export default function ShoppingHomePage() {
         userId: user?.id,
         productId: getCurrentProductId,
         quantity: 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
-        toast("Product added to cart successfully");
+        toast.success("Product added to cart successfully", {
+          duration: 4000,
+          style: {
+            padding: "15px",
+            fontSize: "15px",
+            fontWeight: "600",
+            borderRadius: "12px",
+            backgroundColor: "green",
+            color: "#fff",
+          },
+        });
         dispatch(getCartItems(user?.id));
       }
     });
@@ -85,7 +95,7 @@ export default function ShoppingHomePage() {
 
   useEffect(() => {
     dispatch(
-      getFilteredProducts({ filterParams: {}, sortParams: "price-lowtohigh" })
+      getFilteredProducts({ filterParams: {}, sortParams: "price-lowtohigh" }),
     );
   }, [dispatch]);
 
@@ -107,7 +117,7 @@ export default function ShoppingHomePage() {
           size="icon"
           onClick={() =>
             setCurrentSlide(
-              (prev) => (prev - 1 + slides.length) % slides.length
+              (prev) => (prev - 1 + slides.length) % slides.length,
             )
           }
           className="

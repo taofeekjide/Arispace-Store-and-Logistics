@@ -23,10 +23,20 @@ export default function ProductDetailsDialog({
         userId: user?.id,
         productId: getCurrentProductId,
         quantity: 1,
-      })
+      }),
     ).then((data) => {
       if (data?.payload?.success) {
-        toast("Product added to cart successfully");
+        toast.success("Product added to cart successfully", {
+          duration: 4000,
+          style: {
+            padding: "15px",
+            fontSize: "15px",
+            fontWeight: "600",
+            borderRadius: "12px",
+            backgroundColor: "green",
+            color: "#fff",
+          },
+        });
         dispatch(getCartItems(user?.id));
       }
     });
