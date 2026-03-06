@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const authRoutes = require("./routes/auth/authRoutes.js");
 const adminProductsRoutes = require("./routes/admin/productsRoutes.js");
+const adminOrderRoutes = require("./routes/admin/ordersRoutes.js");
 const shopProductsRouter = require("./routes/shop/productsRoutes.js");
 const shopCartRouter = require("./routes/shop/cartRoutes.js");
 const shopAddressRouter = require("./routes/shop/addressRoutes.js");
@@ -20,7 +21,7 @@ const PORT = process.env.PORT || 5000;
 app.use(
   cors({
     origin: process.env.CLIENT_BASE_URL,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: [
       "Content-Type",
       "Authorization",
@@ -38,6 +39,7 @@ app.use(express.json());
 //routes api
 app.use("/api/auth", authRoutes);
 app.use("/api/admin/products", adminProductsRoutes);
+app.use("/api/admin/orders", adminOrderRoutes);
 app.use("/api/shop/products", shopProductsRouter);
 app.use("/api/shop/cart", shopCartRouter);
 app.use("/api/shop/address", shopAddressRouter);

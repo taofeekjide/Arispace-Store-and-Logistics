@@ -46,8 +46,8 @@ export default function ShoppingOrders() {
               <TableHead>Order ID</TableHead>
               <TableHead>Date</TableHead>
               <TableHead>Total</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead></TableHead>
+              <TableHead>Order Status</TableHead>
+              <TableHead>Payment Status</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -61,6 +61,7 @@ export default function ShoppingOrders() {
                   </TableCell>
                   <TableCell>₦{order.totalAmount.toLocaleString()}</TableCell>
                   <TableCell>{order.orderStatus}</TableCell>
+                  <TableCell>{order.paymentStatus}</TableCell>
                   <TableCell>
                     <Dialog
                       open={openDetailsDialog}

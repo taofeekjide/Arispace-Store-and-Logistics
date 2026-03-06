@@ -1,17 +1,15 @@
 import React from "react";
-import { DialogContent } from "../ui/dialog";
+import { DialogContent, DialogTitle } from "../ui/dialog";
 
 export default function ShoppingOrderdetailsView({ order }) {
-
-  const subTotal =
-  order.totalAmount - order.deliveryFee;
+  const subTotal = order.totalAmount - order.deliveryFee;
 
   return (
     <DialogContent className="max-w-3xl p-0 rounded-2xl max-h-[90vh] flex flex-col">
       {/* ===== Header ===== */}
       <div className="px-6 py-4 border-b bg-gray-50 shrink-0">
-        <h2 className="text-lg font-semibold text-gray-800">Order Details</h2>
-        <p className="text-sm text-gray-500">Manage and update this order</p>
+        <DialogTitle className="sr-only">Order Details</DialogTitle>
+        <p className="text-sm text-gray-500">Your order details</p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
@@ -53,11 +51,18 @@ export default function ShoppingOrderdetailsView({ order }) {
           </div>
 
           <div className="space-y-1">
-            <p className="text-sm text-gray-500">Status</p>
+            <p className="text-sm text-gray-500">Order Status</p>
 
             <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700">
               {order.orderStatus}
             </span>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-sm text-gray-500">Payment Status</p>
+            <p className="font-semibold text-gray-800">
+              {order.paymentStatus}
+            </p>
           </div>
         </div>
 
