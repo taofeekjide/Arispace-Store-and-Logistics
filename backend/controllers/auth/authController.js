@@ -72,6 +72,7 @@ async function login(req, res) {
       .cookie("token", token, {
         httpOnly: true,
         secure: true,
+        sameSite: "none",
       })
       .json({
         success: true,
